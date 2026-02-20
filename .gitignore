@@ -32,19 +32,6 @@ Thumbs.db
 .coverage
 htmlcov/
 
-# Example data (unzipped directories, see README)
-examples/data/*/
-!examples/data/*.zip
-
-# Example output figures
-*.png
-!assets/*.png
-!docs/geobrain_logo.png
-!gempy/**/*.png
-!examples/figs/*.png
-*.gif
-!examples/figs/*.gif
-
 # Jupyter Book build artifacts
 docs/_build/
 

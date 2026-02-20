@@ -48,5 +48,3 @@ examples/data/*/
 # Jupyter Book build artifacts
 docs/_build/
 
-# Claude Code
-.claude/

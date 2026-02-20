@@ -1,6 +1,6 @@
 [build-system]
 requires = ["setuptools>=64", "wheel"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "geobrain"
@@ -56,9 +56,9 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/GeoBrain-Project/geobrain"
+Homepage = "https://github.com/GeoBrain-Project/GeoBrain"
 Documentation = "https://geobrain-project.github.io/geobrain"
-Repository = "https://github.com/GeoBrain-Project/geobrain"
+Repository = "https://github.com/GeoBrain-Project/GeoBrain"
 
 [tool.setuptools.packages.find]
 include = ["geobrain*"]

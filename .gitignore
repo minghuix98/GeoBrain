@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Example data (unzipped directories, see README)
+examples/data/*/
+!examples/data/*.zip
+
+# Example output figures
+*.png
+!assets/*.png
+!docs/geobrain_logo.png
+!gempy/**/*.png
+!examples/figs/*.png
+*.gif
+!examples/figs/*.gif
+
+# Jupyter Book build artifacts
+docs/_build/
+
+# Claude Code
+.claude/

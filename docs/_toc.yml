@@ -1,0 +1,33 @@
+format: jb-book
+root: intro
+parts:
+- caption: Getting Started
+  chapters:
+    - file: installation
+    - file: quickstart
+    - file: architecture
+- caption: Modules
+  chapters:
+    - file: modules/geomodel
+    - file: modules/rock_physics
+    - file: modules/wave
+    - file: modules/flow
+    - file: modules/inversion
+    - file: modules/bayesian
+- caption: Tutorials
+  chapters:
+    - file: tutorials/01_geomodel_sim
+    - file: tutorials/02_geomodel_cosim
+    - file: tutorials/03_implicit_modeling
+    - file: tutorials/04_implicit_inversion
+    - file: tutorials/05_rock_physics
+    - file: tutorials/06_seismic_avo_forward
+    - file: tutorials/07_acoustic_forward
+    - file: tutorials/08_elastic_forward
+    - file: tutorials/09_acoustic_fwi
+    - file: tutorials/10_flow_simulation
+    - file: tutorials/11_flow_dynamic_wells
+    - file: tutorials/12_seismic_inversion
+    - file: tutorials/13_bayes_avo_inversion
+    - file: tutorials/14_ibdp_inversion_svgd
+    - file: tutorials/15_sleipner_joint_inv

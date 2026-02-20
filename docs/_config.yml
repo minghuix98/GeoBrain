@@ -1,0 +1,63 @@
+title: "GeoBrain: Differentiable Subsurface Modeling"
+author: Mingliang Liu
+copyright: "2026"
+logo: geobrain_logo.png
+
+# Enable MyST extensions.
+parse:
+  myst_enable_extensions:
+    - deflist
+    - colon_fence
+    - substitution
+    - dollarmath
+    - amsmath
+
+# Do not execute notebooks during build (examples may require GPU / data).
+execute:
+  execute_notebooks: "off"
+
+# Sphinx extensions.
+sphinx:
+  extra_extensions:
+    - "sphinx.ext.autodoc"
+    - "sphinx.ext.napoleon"
+    - "sphinx.ext.viewcode"
+    - "sphinx.ext.mathjax"
+    - "sphinx_autodoc_typehints"
+  recursive_update: true
+  config:
+    html_context:
+      default_mode: light
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    # Mock heavy imports so autodoc works in CI without GPU.
+    autodoc_mock_imports:
+      - "torch"
+      - "numpy"
+      - "scipy"
+      - "matplotlib"
+      - "segyio"
+      - "lasio"
+      - "resdata"
+    # Napoleon settings for docstring parsing.
+    napoleon_google_docstring: true
+    napoleon_numpy_docstring: true
+    napoleon_include_init_with_doc: true
+    # Autodoc settings.
+    autodoc_member_order: "bysource"
+    autodoc_typehints: "description"
+
+# Citation.
+bibtex_bibfiles:
+  - references.bib
+
+# Repository information.
+repository:
+  url: https://github.com/GeoBrain-Project/GeoBrain
+  path_to_book: docs
+  branch: main
+
+# HTML settings.
+html:
+  use_issues_button: true
+  use_repository_button: true
+  favicon: ""

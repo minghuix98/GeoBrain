@@ -1,0 +1,2 @@
+examples/data/multiphysics.zip filter=lfs diff=lfs merge=lfs -text
+examples/data/svgd.zip filter=lfs diff=lfs merge=lfs -text

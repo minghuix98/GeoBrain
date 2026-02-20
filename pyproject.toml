@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "geobrain"
+version = "0.1.0"
+description = "An End-to-End Differentiable Platform for Integrated Subsurface Modeling"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Mingliang Liu", email = "mingliangliu@sdu.edu.cn"},
+]
+keywords = [
+    "geophysics",
+    "bayesian-inference",
+    "rock-physics",
+    "seismic-inversion",
+    "differentiable-programming",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "torch>=2.0",
+    "numpy>=1.22",
+    "scipy>=1.8",
+    "matplotlib>=3.5",
+]
+
+[project.optional-dependencies]
+io = [
+    "segyio",
+    "lasio",
+    "resdata",
+]
+docs = [
+    "jupyter-book>=1.0",
+    "sphinx-autodoc-typehints",
+    "sphinxcontrib-bibtex",
+]
+dev = [
+    "pytest>=7.0",
+    "geobrain[io]",
+    "geobrain[docs]",
+]
+all = [
+    "geobrain[io]",
+    "geobrain[docs]",
+    "geobrain[dev]",
+]
+
+[project.urls]
+Homepage = "https://github.com/GeoBrain-Project/geobrain"
+Documentation = "https://geobrain-project.github.io/geobrain"
+Repository = "https://github.com/GeoBrain-Project/geobrain"
+
+[tool.setuptools.packages.find]
+include = ["geobrain*"]

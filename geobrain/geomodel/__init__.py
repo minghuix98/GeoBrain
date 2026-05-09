@@ -29,6 +29,7 @@ Available Methods:
 
     Implemented (generative):
         - diffusion: Latent Diffusion Model (VAE + UNet + DDPM/DDIM)
+        - diffsim: DiffSim facies diffusion models (2D/3D, DDPM/DDIM)
         - vae: 3D AutoencoderKL
         - gan: DCGAN-style 3D facies generation
 
@@ -71,7 +72,7 @@ from . import implicit
 # Explicit imports for convenience
 from .geostats import FFTMovingAverage, FFTMASimulator, SGSSimulator
 from .geostats import VariogramModel, VariogramStructure
-from .geogen import GANSimulator, VAESimulator, DiffusionSimulator
+from .geogen import GANSimulator, VAESimulator, DiffusionSimulator, DiffSimSimulator
 from .implicit import ImplicitSimulator, ImplicitModel, ImplicitModelConfig
 
 
@@ -93,7 +94,7 @@ class Simulator:
         >>> 
         >>> # List available methods
         >>> print(Simulator.list_methods())
-        ['fft_ma', 'sgs', 'gan', 'vae', 'diffusion']
+        ['fft_ma', 'sgs', 'gan', 'vae', 'diffusion', 'diffsim']
         >>> 
         >>> # List implemented methods
         >>> print(Simulator.list_implemented())
@@ -110,7 +111,7 @@ class Simulator:
         Create simulator instance by method name.
         
         Args:
-            method: Method name ('fft_ma', 'sgs', 'gan', 'vae', 'diffusion').
+            method: Method name ('fft_ma', 'sgs', 'gan', 'vae', 'diffusion', 'diffsim').
             **kwargs: Arguments passed to simulator constructor.
             
         Returns:
@@ -214,6 +215,7 @@ __all__ = [
     "GANSimulator",
     "VAESimulator",
     "DiffusionSimulator",
+    "DiffSimSimulator",
 
     # Implicit modeling
     "ImplicitSimulator",

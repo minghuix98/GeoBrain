@@ -34,6 +34,18 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+diffsim = [
+    "torchvision>=0.15.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "matplotlib>=3.7.0",
+    "pandas>=2.0.0",
+    "Pillow>=9.0.0",
+    "einops>=0.7.0",
+    "tqdm>=4.65.0",
+    "tensorboardX>=2.6.0",
+    "scikit-image>=0.21.0",
+]
 io = [
     "segyio",
     "lasio",
@@ -53,12 +65,13 @@ all = [
     "geobrain[io]",
     "geobrain[docs]",
     "geobrain[dev]",
+    "geobrain[diffsim]",
 ]
 
 [project.urls]
-Homepage = "https://github.com/GeoBrain-Project/GeoBrain"
+Homepage = "https://github.com/minghuix98/GeoBrain"
 Documentation = "https://geobrain-project.github.io/geobrain"
-Repository = "https://github.com/GeoBrain-Project/GeoBrain"
+Repository = "https://github.com/minghuix98/GeoBrain"
 
 [tool.setuptools.packages.find]
 include = ["geobrain*"]

@@ -1,0 +1,83 @@
+{
+  "name": "case1_geomodeling",
+  "type": "2d",
+  "image_size": 64,
+
+  "unconditional": {
+    "timesteps": 1500,
+    "channels": 1,
+    "dim": 64,
+    "dim_mults": [1, 2, 4],
+    "beta_schedule": "linear",
+    "data": {
+      "train": "data/diffsim/case1_geomodeling/train"
+    },
+    "training": {
+      "epochs": 300,
+      "batch_size": 256,
+      "lr": 1e-3,
+      "loss": "huber",
+      "save_every": 500,
+      "checkpoint_every": 10
+    },
+    "output": {
+      "results_dir": "outputs/diffsim/case1_geomodeling/unconditional/results",
+      "model_dir": "outputs/diffsim/case1_geomodeling/unconditional/model",
+      "log_dir": "outputs/diffsim/case1_geomodeling/unconditional/logs"
+    }
+  },
+
+  "conditional": {
+    "timesteps": 1500,
+    "in_channel": 5,
+    "out_channel": 1,
+    "inner_channel": 64,
+    "channel_mults": [1, 2, 4],
+    "attn_res": [16],
+    "num_head_channels": 32,
+    "res_blocks": 2,
+    "dropout": 0.2,
+    "predict_type": "epsilon",
+    "_predict_type_options": ["epsilon", "x_start"],
+    "_predict_type_note": "epsilon: predict noise, x_start: predict x0 directly",
+    "beta_schedule": {
+      "train": {
+        "schedule": "cosine",
+        "n_timestep": 1500,
+        "linear_start": 1e-6,
+        "linear_end": 0.01
+      },
+      "test": {
+        "schedule": "cosine",
+        "n_timestep": 1500,
+        "linear_start": 1e-4,
+        "linear_end": 0.09
+      }
+    },
+    "data": {
+      "train_image": "data/diffsim/case1_geomodeling/train_image",
+      "train_mask": "data/diffsim/case1_geomodeling/train_mask",
+      "test_image": "examples/data/diffsim/case1_geomodeling/test_image",
+      "test_mask": "examples/data/diffsim/case1_geomodeling/test_mask"
+    },
+    "training": {
+      "epochs": 1000,
+      "batch_size": 64,
+      "lr": 5e-5,
+      "loss": "mse",
+      "ema_decay": 0.9999,
+      "save_every": 500,
+      "checkpoint_every": 10
+    },
+    "output": {
+      "results_dir": "outputs/diffsim/case1_geomodeling/conditional/results",
+      "model_dir": "outputs/diffsim/case1_geomodeling/conditional/model",
+      "log_dir": "outputs/diffsim/case1_geomodeling/conditional/logs"
+    }
+  },
+
+  "checkpoints": {
+    "unconditional": "checkpoints/diffsim/case1_geomodeling/unconditional.pth",
+    "conditional": "checkpoints/diffsim/case1_geomodeling/conditional.pth"
+  }
+}

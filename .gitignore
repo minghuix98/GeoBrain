@@ -35,3 +35,11 @@ htmlcov/
 # Jupyter Book build artifacts
 docs/_build/
 
+# Model checkpoints and generated DiffSim outputs
+/checkpoints/
+/outputs/
+/examples/results/
+/examples/data/diffsim/
+/results/
+/logs/
+/model/

@@ -3,6 +3,7 @@ Generative AI methods for geological modeling.
 
 Implemented:
     - DiffusionSimulator: Latent Diffusion Model (VAE + UNet + DDPM/DDIM)
+    - DiffSimSimulator: DiffSim facies diffusion models (2D/3D, DDPM/DDIM)
     - VAESimulator: 3D AutoencoderKL (encode, decode, interpolate)
     - GANSimulator: DCGAN-style 3D generator for facies
 
@@ -13,10 +14,19 @@ Version: 0.1.0
 from .gans import GANSimulator, Generator3D
 from .vae import VAESimulator
 from .diffusion import DiffusionSimulator
+from .diffsim_simulator import (
+    DiffSimSimulator,
+    create_diffsim_conditional_simulator,
+    create_diffsim_unconditional_simulator,
+)
+
 
 __all__ = [
     "GANSimulator",
     "Generator3D",
     "VAESimulator",
     "DiffusionSimulator",
+    "DiffSimSimulator",
+    "create_diffsim_conditional_simulator",
+    "create_diffsim_unconditional_simulator",
 ]

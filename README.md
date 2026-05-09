@@ -52,12 +52,20 @@ By combining **differentiable physics**, **Bayesian inference**, and **deep lear
 ## Installation
 
 ```bash
-git clone https://github.com/GeoBrain-Project/GeoBrain.git
-cd geobrain
+git clone https://github.com/minghuix98/GeoBrain.git
+cd GeoBrain
 pip install -e ".[all]"
 ```
 
 **Requirements**: Python 3.9+, PyTorch 2.0+, NumPy >= 1.22, SciPy >= 1.8, Matplotlib >= 3.5
+
+For DiffSim facies diffusion support, install the optional extra:
+
+```bash
+pip install -e ".[diffsim]"
+```
+
+DiffSim checkpoints are intentionally not tracked in git. Put local checkpoints under `checkpoints/diffsim/<case>/`, matching the paths in `configs/diffsim/*.json`. Compact DiffSim example data is provided as `examples/data/diffsim.zip` and is extracted by the same command below.
 
 ### Example Data
 
@@ -75,6 +83,7 @@ examples/data/
 ├── marmousi/       # Marmousi2 velocity & density SEG-Y files
 ├── svgd/           # IBDP pretrained model & seismic data
 ├── multiphysics/   # Sleipner joint inversion data
+├── diffsim/        # Compact DiffSim example data
 └── pvt/            # PVT tables for flow simulation
 ```
 
@@ -146,8 +155,8 @@ geobrain/
 └── decision/          # Decision-making under uncertainty
 
 examples/
-├── 01_geomodel_sim.py ... 15_sleipner_joint_inv.py   # Python scripts
-├── notebooks/         # Matching Jupyter notebooks for all 15 examples
+├── 01_geomodel_sim.py ... 18_diffsim_3d_facies.py    # Python scripts
+├── notebooks/         # Matching Jupyter notebooks for all examples
 ├── figs/              # Generated figures and animations
 └── data/              # External datasets (see Installation)
 ```
@@ -156,7 +165,7 @@ examples/
 
 ## Tutorials
 
-We provide 15 end-to-end examples covering geomodeling, multiphysics simulation, deterministic inversion, and Bayesian inference. Each example is available as both a **Python script** (`examples/`) and an interactive **Jupyter notebook** (`examples/notebooks/`).
+We provide 18 end-to-end examples covering geomodeling, multiphysics simulation, deterministic inversion, Bayesian inference, and DiffSim facies diffusion. Each example is available as both a **Python script** (`examples/`) and an interactive **Jupyter notebook** (`examples/notebooks/`).
 
 | # | Example | Description |
 |---|---------|-------------|
@@ -175,6 +184,9 @@ We provide 15 end-to-end examples covering geomodeling, multiphysics simulation,
 | 13 | [bayes_avo_inversion](examples/13_bayes_avo_inversion.py) | Bayesian AVO inversion (4 samplers) |
 | 14 | [ibdp_inversion_svgd](examples/14_ibdp_inversion_svgd.py) | IBDP CO<sub>2</sub> site -- latent-space SVGD |
 | 15 | [sleipner_joint_inv](examples/15_sleipner_joint_inv.py) | Sleipner CO<sub>2</sub> -- joint seismic-resistivity inversion |
+| 16 | [diffsim_2d_channel](examples/16_diffsim_2d_channel.py) | DiffSim 2D channel facies generation and inpainting |
+| 17 | [diffsim_2d_muddrape](examples/17_diffsim_2d_muddrape.py) | DiffSim 2D mud-drape facies generation and inpainting |
+| 18 | [diffsim_3d_facies](examples/18_diffsim_3d_facies.py) | DiffSim 3D facies generation and inpainting |
 
 ---
 
@@ -189,7 +201,7 @@ We provide 15 end-to-end examples covering geomodeling, multiphysics simulation,
 | Co-simulation | Multi-variable correlated fields (e.g., porosity + sand volume) via `CoSimConfig`     |
 | Variogram | Composite variogram models (spherical, exponential, Gaussian) via `VariogramModel`    |
 | Implicit Modeling | Differentiable Geomodeling                                                            |
-| VAE / GAN / Diffusion | Deep generative models for realistic geological facies generation                     |
+| VAE / GAN / Diffusion / DiffSim | Deep generative models for realistic geological facies generation                     |
 
 ### Rock Physics (`geobrain.physics.rock`) — 70+ models
 
@@ -304,7 +316,7 @@ If you use GeoBrain in your research, please cite:
   title = {GeoBrain: An End-to-End Differentiable Platform for Integrated Subsurface Modeling},
   author = {Liu, Mingliang},
   year = {2026},
-  url = {https://github.com/GeoBrain-Project/GeoBrain}
+  url = {https://github.com/minghuix98/GeoBrain}
 }
 ```
 

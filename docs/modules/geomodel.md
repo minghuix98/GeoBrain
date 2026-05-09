@@ -155,7 +155,30 @@ generators:
 |-------|-------|-------------|
 | Variational Autoencoder | `VAESimulator` | Latent-space geological modeling |
 | Generative Adversarial Network | `GANSimulator` | Adversarial training for realistic geology |
-| Diffusion Model | `DiffusionSimulator` | Score-based diffusion for geology generation |
+| Latent Diffusion Model | `DiffusionSimulator` | LDMC-based 3D geological generation |
+| DiffSim Diffusion Model | `DiffSimSimulator` | 2D/3D facies diffusion with DDPM and DDIM samplers |
+
+DiffSim examples are available as scripts (`examples/16_diffsim_2d_channel.py`, `17_diffsim_2d_muddrape.py`, `18_diffsim_3d_facies.py`) and matching notebooks under `examples/notebooks/`. Compact example data is distributed as `examples/data/diffsim.zip`.
+
+```python
+from geobrain.geomodel import Simulator
+from geobrain.geomodel.geogen import DiffSimSimulator
+
+sim = DiffSimSimulator.from_config(
+    "configs/diffsim/case1_geomodeling.json",
+    mode="unconditional",
+    sampler="ddim",
+)
+
+# Equivalent factory path:
+sim = Simulator.create(
+    "diffsim",
+    checkpoint_path="checkpoints/diffsim/case1_geomodeling/unconditional.pth",
+    model_type="2d",
+    mode="unconditional",
+    image_size=64,
+)
+```
 
 ## Data Transforms
 

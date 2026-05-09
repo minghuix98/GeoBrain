@@ -13,10 +13,18 @@
 Clone the repository and install:
 
 ```bash
-git clone https://github.com/GeoBrain-Project/geobrain.git
-cd geobrain
+git clone https://github.com/minghuix98/GeoBrain.git
+cd GeoBrain
 pip install -e ".[all]"
 ```
+
+For DiffSim facies diffusion models, install the optional dependencies:
+
+```bash
+pip install -e ".[diffsim]"
+```
+
+DiffSim model checkpoints are local artifacts and are not tracked in git. Place them under `checkpoints/diffsim/<case>/`. Compact DiffSim example data is distributed as `examples/data/diffsim.zip`; extract it with the other example data archives from `examples/data/`.
 
 ## GPU Support
 

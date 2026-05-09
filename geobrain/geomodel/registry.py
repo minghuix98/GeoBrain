@@ -32,7 +32,7 @@ class SimulatorRegistry(BaseRegistry):
         >>>
         >>> # List available methods
         >>> print(SimulatorRegistry.list_methods())
-        ['fft_ma', 'sgs', 'gan', 'vae', 'diffusion']
+        ['fft_ma', 'sgs', 'gan', 'vae', 'diffusion', 'diffsim']
         >>>
         >>> # Get method info
         >>> info = SimulatorRegistry.get_info('fft_ma')
@@ -126,7 +126,7 @@ class SimulatorRegistry(BaseRegistry):
 
         Example:
             >>> SimulatorRegistry.list_methods()
-            ['fft_ma', 'sgs', 'gan', 'vae', 'diffusion']
+            ['fft_ma', 'sgs', 'gan', 'vae', 'diffusion', 'diffsim']
             >>> SimulatorRegistry.list_methods(category='geostat')
             ['fft_ma', 'sgs']
         """

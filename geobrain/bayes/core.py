@@ -212,9 +212,21 @@ class BaseSampler(ABC):
         target: Optional[Distribution] = None,
         device: Optional[torch.device] = None
     ):
-        self.device = device or torch.device(
-            'cuda' if torch.cuda.is_available() else 'cpu'
-        )
+        if device is None:
+            if target is not None and hasattr(target, "parameters") and hasattr(target, "buffers"):
+                try:
+                    device = next(target.parameters()).device
+                except StopIteration:
+                    try:
+                        device = next(target.buffers()).device
+                    except StopIteration:
+                        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+            else:
+                device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        elif isinstance(device, str):
+            device = torch.device(device)
+
+        self.device = device
         # Ensure target distribution is on the same device
         if target is not None and hasattr(target, 'to'):
             target = target.to(self.device)
